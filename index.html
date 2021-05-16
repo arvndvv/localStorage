@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ArvLand</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+    <div class="logo">ArvLand</div> 
+    <nav class=""> 
+        <p onclick="navChange('login')">Login</p>
+        <p onclick="navChange('register')">Register</p>
+    </nav>
+    </div>
+    <div class="container">
+        <section id="login" class="login ">
+           <span class="propic"></span>
+                <input type="text" name="user" id="loginUser" placeholder="Username">
+                <input type="password" name="pass" id="loginPass" placeholder="Password">
+                <input type="submit" value="Login" onclick="login()">
+      
+        </section>
+        <section id="register" class="register hide">
+            <span class="img"></span>
+                <input type="text" name="user" id="regUser" placeholder="Username">
+                <input type="email" name="email" id="regEmail" placeholder="Email">
+                <input type="password" name="pass" id="regPass" placeholder="Password">
+                <input type="submit" value="Register" onclick="register()">
+        </section>
+        <section id="home" class="home hide">
+            <span id="msg"></span>
+            <p onclick="logout()" class="logout">Logout</p>
+        </section>
+    </div>
+    <footer>2021 © ArvLand</footer>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

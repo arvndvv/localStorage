@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*,::after,::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding:1em;
+}
+.header .logo{
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+.header nav{
+    display: flex;
+
+}
+.header nav.hide{
+   opacity: 0;
+   visibility: hidden;
+
+}
+.header nav p{
+    padding: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8em;
+    transition: 0.3s ease;
+}
+.header nav p:hover{
+   color:  rgb(145, 165, 255);
+}
+
+.container{
+    padding: 1em;
+    height: 80vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.container section{
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+    position: absolute;
+    transition: 0.5s ease;
+    padding: 10px;
+    background: linear-gradient(to top,rgb(145, 165, 255),rgb(171, 221, 255));
+    /* background: rgb(145, 165, 255); */
+    border-radius: 5px;
+}
+.container section .propic{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    background: url('avatar.png');
+   background-size: cover;
+   background-position: center;
+    margin: 20px;
+    /* background: white; */
+}
+.container section input{
+    margin: 5px 10px;
+    border: none;
+    padding:5px;
+    width: 15em;
+    border-radius: 2px;
+}
+.container section input[type='submit']{
+    margin:  12px;
+    background: transparent;
+    border: 2px solid white;
+    color:white;
+    cursor: pointer;
+    
+    font-weight: 600;
+    transition:  0.3s ease;
+}
+.container section input[type='submit']:hover{
+    background: white;
+    color:  rgb(145, 165, 255);
+
+}
+.container section.login{
+    left: 50%;
+    transform: translateX(-50%)
+}
+.container section.login.hide{
+    transform: translateX(-120%);
+    opacity: 0;
+    visibility: hidden;
+}
+.container section.register .img{
+    width: 100%;
+    height: 120%;
+    background: url('thumbsup.png');
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: -30px;
+    pointer-events: none;
+    left: -90px;
+
+
+}
+.container section.register{
+    left: 50%;
+    transform: translateX(-50%);
+}
+.container section.register.hide{
+    transform: translateX(120%);
+    opacity: 0;
+    visibility: hidden;
+}
+.container section.home{
+    background: transparent;
+    transform: scale(1)
+
+}
+.container section.home.hide{
+    transform: scale(0)
+}
+.container section.home .logout{
+text-decoration: underline;
+cursor: pointer;
+transition: 0.3s ;
+}
+.container section.home .logout:hover{
+    color: tomato;
+}
+footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+text-align: center;
+color: #677079;
+font-weight: 600;
+letter-spacing: 2px;
+font-size: 0.8em;
+    padding: 10px;
+}
