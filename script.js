@@ -5,7 +5,6 @@ const notyf = new Notyf({
       x: 'right',
       y: 'top',
     }});
-
 function navChange(id){
     let login=document.querySelector('#login');
     let register=document.querySelector('#register');
@@ -27,44 +26,54 @@ function navChange(id){
     }
 }
 function login(){
-    let username=document.querySelector('#loginUser').value;
-    let password=document.querySelector('#loginPass').value;
-    let users=JSON.parse(localStorage.getItem('users'));
-    let userPresent=users&&users.some(user=>user.username==username&&user.password==password);
-    console.log(userPresent);
-    
-    if(userPresent){
-        notyf.success('correct');
-        let msg=document.querySelector('#msg');
-        msg.textContent=`Helo ${username}, Welcome to ArvLand.`;
-        navChange('home');
-        let obj=JSON.stringify({'username':username,'password':password})
-        localStorage.setItem('loggedUser',obj);
+    let userName = document.querySelector('#loginUser').value;
+    let password = document.querySelector('#loginPass').value;
+    let userData=JSON.parse(localStorage.getItem('Users'));
+    if(userData&&userData.length){
+        let userPresent=userData.some(user=>user.username===userName&&user.password===password)
+        if(userPresent){
+           
+            notyf.success('Welcome Home!')
+            let loggedUser=JSON.stringify({"username":userName,"password":password})
+            localStorage.setItem('User',loggedUser);
+            let msgSpan=document.querySelector('#msg');
+            msgSpan.textContent=`Hello ${userName}, welcome to ArvLand.`;
+            document.querySelector('nav').classList.add('hide');
+            navChange('home')
+        }
+        else{
+        notyf.error('incorrect username/password!')
 
+            
+        }
     }
     else{
-        notyf.error('wrong')
+        
+        notyf.error('no user present!')
+        
     }
-    console.log(users)
 }
 function register(){
-    let username=document.querySelector('#regUser').value;
-    let email=document.querySelector('#regEmail').value;
-    let password=document.querySelector('#regPass').value;
-    let users=JSON.parse(localStorage.getItem('users'));
-    let userdata=[];
-    if(users&&users.length>0){
-     userdata=[...users,{'username':username,'password':password,'email':email}]
 
-    }
-    else{
-        userdata=[{'username':username,'password':password,'email':email}]
-    }
-    let obj=JSON.stringify(userdata)
-    localStorage.setItem('users',obj);
-    navChange('login');
+
+let userName = document.querySelector('#regUser').value;
+let email = document.querySelector('#regEmail').value;
+let password = document.querySelector('#regPass').value;
+let userList=JSON.parse(localStorage.getItem('Users'));
+let data=[];
+if(userList){
+data=JSON.stringify([...userList,{"username":userName,"email":email,"password":password}])
+}
+else{
+data=JSON.stringify([{"username":userName,"email":email,"password":password}])
+    
+}
+localStorage.setItem('Users',data)
+navChange('login');
 }
 function logout(){
-localStorage.removeItem('loggedUser');
-navChange('login')
+    localStorage.removeItem('User');
+    document.querySelector('nav').classList.remove('hide');
+    navChange('login')
+
 }
